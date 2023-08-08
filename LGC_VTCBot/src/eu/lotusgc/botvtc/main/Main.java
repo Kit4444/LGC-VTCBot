@@ -1,4 +1,4 @@
-package eu.lotusgc.bot_vtc.main;
+package eu.lotusgc.botvtc.main;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,9 +13,10 @@ import java.util.logging.SimpleFormatter;
 
 import org.simpleyaml.configuration.file.YamlFile;
 
-import eu.lotusgc.bot_vtc.event.generic.ReadyClass;
-import eu.lotusgc.bot_vtc.misc.ConfigFileHandler;
-import eu.lotusgc.bot_vtc.misc.MySQL;
+import eu.lotusgc.botvtc.event.generic.ParseJobEmbed;
+import eu.lotusgc.botvtc.event.generic.ReadyClass;
+import eu.lotusgc.botvtc.misc.ConfigFileHandler;
+import eu.lotusgc.botvtc.misc.MySQL;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
@@ -46,6 +47,7 @@ public class Main {
 		builder.enableIntents(GatewayIntent.GUILD_MODERATION, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_EMOJIS_AND_STICKERS, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_VOICE_STATES);
 		builder.enableCache(CacheFlag.ACTIVITY, CacheFlag.CLIENT_STATUS, CacheFlag.EMOJI, CacheFlag.FORUM_TAGS, CacheFlag.ONLINE_STATUS, CacheFlag.SCHEDULED_EVENTS, CacheFlag.VOICE_STATE);
 		builder.addEventListeners(new ReadyClass());
+		builder.addEventListeners(new ParseJobEmbed());
 		builder.build();
 	}
 	

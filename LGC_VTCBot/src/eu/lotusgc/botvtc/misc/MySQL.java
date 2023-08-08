@@ -1,10 +1,10 @@
-package eu.lotusgc.bot_vtc.misc;
+package eu.lotusgc.botvtc.misc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import eu.lotusgc.bot_vtc.main.Main;
+import eu.lotusgc.botvtc.main.Main;
 
 public class MySQL {
 	

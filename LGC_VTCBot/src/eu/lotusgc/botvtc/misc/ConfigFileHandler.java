@@ -1,4 +1,4 @@
-package eu.lotusgc.bot_vtc.misc;
+package eu.lotusgc.botvtc.misc;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import org.simpleyaml.configuration.file.YamlFile;
 
 public class ConfigFileHandler {
 	
-	public static String configFolderName = "LotusPublicBot";
+	public static String configFolderName = "LotusVTCBot";
 	public static File configurationFolder = new File(configFolderName);
 	public static String mainConfigName = "botconfig.yml";
 	public static File mainConfig = new File(configFolderName + "/" + mainConfigName);

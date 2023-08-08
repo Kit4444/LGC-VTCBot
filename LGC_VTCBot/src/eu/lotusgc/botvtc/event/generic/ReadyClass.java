@@ -1,6 +1,6 @@
-package eu.lotusgc.bot_vtc.event.generic;
+package eu.lotusgc.botvtc.event.generic;
 
-import eu.lotusgc.bot_vtc.main.Main;
+import eu.lotusgc.botvtc.main.Main;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
