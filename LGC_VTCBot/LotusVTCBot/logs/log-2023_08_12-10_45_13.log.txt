@@ -1,0 +1,2 @@
+Aug. 12, 2023 10:45:13 AM eu.lotusgc.botvtc.main.Main connectSQL
+INFORMATION: Bot is not using SQL!

@@ -6,11 +6,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import eu.lotusgc.botvtc.main.Main;
+import eu.lotusgc.botvtc.misc.MySQL;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.channel.ChannelType;
@@ -63,6 +67,33 @@ public class ParseJobEmbed extends ListenerAdapter{
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	private boolean existJob(int jobId) {
+		boolean exists = false;
+		try {
+			PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT jobId FROM vtc_jobs WHERE jobId = ?");
+			ps.setInt(1, jobId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				exists = true;
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return exists;
+	}
+	
+	//https://e.truckyapp.com/api/v1/job/6986172
+	private void addJobToDB(JsonObject obj) {
+		try {
+			PreparedStatement ps = MySQL.getConnection().prepareStatement("INSERT INTO vtc_jobs jobId = ?, userId = ?, gameId = ?, gamemode = ?, vehicle_brand = ?, vehicle_model = ?, trailer_body = ?, trailer_chain = ?, drivenKm = ?, source_city = ?, source_company = ?, destination_city = ?, destination_company = ?, cargo_name = ?, cargo_units = ?, cargo_unit_mass = ?, money_revenue = ?, money_taxes = ?, usedFuel = ?, isLate = ?, driveTime = ?, statistics = ?, maxSpeed = ?, avgSpeed = ?");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
